@@ -17,7 +17,7 @@ import CustomTouchableButton from '../components/CustomTouchableButton';
 import {useTheme} from '../provider/ThemeProvider';
 // import {SafeAreaView} from 'react-native-safe-area-context';
 
-export default function Login({navigation}) {
+export default function Register({navigation}) {
   const isDarkMode = useColorScheme() === 'dark';
   const theme = useTheme();
   const [email, setEmail] = useState('');
@@ -103,7 +103,7 @@ export default function Login({navigation}) {
               <Text
                 style={{
                   textAlign: 'center',
-                  color: isDarkMode ? theme.text : theme.text,
+                  color: isDarkMode ? '#fff' : '#000',
                 }}
                 onPress={() => navigation.navigate('ForgotPassword')}>
                 Forgot Password ?
@@ -113,14 +113,11 @@ export default function Login({navigation}) {
               <Text
                 style={{
                   textAlign: 'center',
-                  color: isDarkMode ? theme.text : theme.text,
+                  color: isDarkMode ? '#fff' : '#000',
                 }}>
                 Don't have an account ?{' '}
                 <Text
-                  style={{
-                    fontWeight: 'bold',
-                    color: isDarkMode ? theme.text : theme.text,
-                  }}
+                  style={{fontWeight: 'bold', color: theme.primary}}
                   onPress={() => navigation.navigate('Register')}>
                   Register
                 </Text>

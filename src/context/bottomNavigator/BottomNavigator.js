@@ -24,7 +24,8 @@ export default function BottomNavigator() {
       initialRouteName="HomeScreen"
       activeColor={isDarkMode ? theme.primary : theme.primary} // Adjust the active color based on dark mode
       barStyle={{
-        backgroundColor: isDarkMode ? theme.background : theme.background,
+        backgroundColor: isDarkMode ? '#1B222C' : '#ffffff',
+        color: isDarkMode ? theme.primary : theme.primary,
       }}>
       <Tab.Screen
         name="Home"

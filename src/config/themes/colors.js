@@ -3,16 +3,32 @@ const colors = {
   light: {
     primary: '#e91e63',
     secondary: '#FFC107',
-    background: '#ffffff',
+    background: '#F2F2F2',
     text: '#333333',
+    appBarText: '#ffffff',
+    borderColor: '#e91e63',
     status: '#e91e63',
+    fontSize: {
+      small: 12,
+      regular: 16,
+      large: 30,
+    },
+    fontFamily: 'Arial',
   },
   dark: {
-    primary: '#FFC107',
+    primary: '#1B222C',
     secondary: '#e91e63',
-    background: '#1E1E1E',
+    background: '#000',
     text: '#ffffff',
-    status: '#e91e63',
+    appBarText: '#ffffff',
+    borderColor: '#cccccc',
+    status: '#1B222C',
+    fontSize: {
+      small: 12,
+      regular: 16,
+      large: 20,
+    },
+    fontFamily: 'Arial',
   },
 };
 
