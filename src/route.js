@@ -8,6 +8,8 @@ import Cart from './screens/Cart';
 import Profile from './screens/Profile';
 import {StatusBar} from 'react-native';
 import {useTheme} from './provider/ThemeProvider';
+import Login from './screens/Login';
+import ProfileEdit from './screens/ProfileEdit';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +30,8 @@ export default function Route() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Cart" component={Cart} />
         <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="ProfileEdit" component={ProfileEdit} />
       </Stack.Navigator>
     </>
   );
