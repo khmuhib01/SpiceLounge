@@ -1,9 +1,11 @@
 import {View, Text, StyleSheet, useColorScheme} from 'react-native'; // Import useColorScheme
 import React from 'react';
+import {useTheme} from '../provider/ThemeProvider';
 
 export default function HeaderComponent({headerTitle, headerSubTitle}) {
   const isDarkMode = useColorScheme() === 'dark';
-  const headerBackgroundColor = isDarkMode ? '#121212' : '#EB1C3C';
+  const theme = useTheme();
+  const headerBackgroundColor = isDarkMode ? theme.primary : theme.primary;
   const textColor = isDarkMode ? 'white' : 'white';
 
   return (

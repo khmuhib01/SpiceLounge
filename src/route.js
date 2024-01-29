@@ -11,7 +11,10 @@ import {useTheme} from './provider/ThemeProvider';
 import Login from './screens/Login';
 import ProfileEdit from './screens/ProfileEdit';
 import Register from './screens/Register';
-import ForgotPasssword from './screens/ForgotPasssword';
+import ForgotPassword from './screens/ForgotPassword';
+import OrderHistory from './screens/OrderHistory';
+import About from './screens/About';
+import Terms from './screens/Terms';
 
 const Stack = createNativeStackNavigator();
 
@@ -74,7 +77,46 @@ export default function Route() {
             headerTintColor: isDarkMode ? theme.appBarText : theme.appBarText,
           }}
         />
-        <Stack.Screen name="ForgotPassword" component={ForgotPasssword} />
+        <Stack.Screen
+          name="ForgotPassword"
+          component={ForgotPassword}
+          options={{
+            headerStyle: {
+              backgroundColor: isDarkMode ? theme.primary : theme.primary,
+            },
+            headerTintColor: isDarkMode ? theme.appBarText : theme.appBarText,
+          }}
+        />
+        <Stack.Screen
+          name="OrderHistory"
+          component={OrderHistory}
+          options={{
+            headerStyle: {
+              backgroundColor: isDarkMode ? theme.primary : theme.primary,
+            },
+            headerTintColor: isDarkMode ? theme.appBarText : theme.appBarText,
+          }}
+        />
+        <Stack.Screen
+          name="About"
+          component={About}
+          options={{
+            headerStyle: {
+              backgroundColor: isDarkMode ? theme.primary : theme.primary,
+            },
+            headerTintColor: isDarkMode ? theme.appBarText : theme.appBarText,
+          }}
+        />
+        <Stack.Screen
+          name="Terms"
+          component={Terms}
+          options={{
+            headerStyle: {
+              backgroundColor: isDarkMode ? theme.primary : theme.primary,
+            },
+            headerTintColor: isDarkMode ? theme.appBarText : theme.appBarText,
+          }}
+        />
       </Stack.Navigator>
     </>
   );

@@ -9,6 +9,7 @@ import Cart from '../../screens/Cart';
 import Profile from '../../screens/Profile';
 
 import {useTheme} from '../../provider/ThemeProvider';
+import Menu from '../../screens/Menu';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -59,11 +60,11 @@ export default function BottomNavigator() {
       />
       <Tab.Screen
         name="Settings"
-        component={Settings}
+        component={Menu}
         options={{
-          tabBarLabel: 'Settings',
+          tabBarLabel: 'Menu',
           tabBarIcon: ({color}) => (
-            <MaterialCommunityIcons name="tools" color={color} size={26} />
+            <MaterialCommunityIcons name="menu" color={color} size={26} />
           ),
         }}
       />

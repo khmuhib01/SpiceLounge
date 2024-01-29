@@ -7,6 +7,7 @@ const colors = {
     text: '#333333',
     appBarText: '#ffffff',
     borderColor: '#e91e63',
+    iconColor: '#e91e63',
     status: '#e91e63',
     fontSize: {
       small: 12,
@@ -22,6 +23,7 @@ const colors = {
     text: '#ffffff',
     appBarText: '#ffffff',
     borderColor: '#cccccc',
+    iconColor: '#ffffff',
     status: '#1B222C',
     fontSize: {
       small: 12,
