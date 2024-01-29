@@ -54,7 +54,16 @@ export default function Route() {
             headerTintColor: isDarkMode ? theme.appBarText : theme.appBarText,
           }}
         />
-        <Stack.Screen name="ProfileEdit" component={ProfileEdit} />
+        <Stack.Screen
+          name="ProfileEdit"
+          component={ProfileEdit}
+          options={{
+            headerStyle: {
+              backgroundColor: isDarkMode ? theme.primary : theme.primary,
+            },
+            headerTintColor: isDarkMode ? theme.appBarText : theme.appBarText,
+          }}
+        />
         <Stack.Screen
           name="Register"
           component={Register}

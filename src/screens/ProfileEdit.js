@@ -1,120 +1,157 @@
 import {
   View,
   Text,
-  ScrollView,
-  SafeAreaView,
-  Image,
-  TouchableOpacity,
-  Dimensions,
-  StyleSheet,
   TextInput,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+  ScrollView,
+  Button,
+  SafeAreaView,
   useColorScheme,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import React, {useState} from 'react';
-import HeaderComponent from '../components/HeaderComponent';
+import {useNavigation} from '@react-navigation/native';
 import CustomTextInput from '../components/CustomTextInput';
 import CustomTouchableButton from '../components/CustomTouchableButton';
+import {useTheme} from '../provider/ThemeProvider';
+// import {SafeAreaView} from 'react-native-safe-area-context';
 
 export default function ProfileEdit({navigation}) {
   const isDarkMode = useColorScheme() === 'dark';
+  const theme = useTheme();
+  const [fname, setFname] = useState('');
+  const [lname, setLname] = useState('');
+  const [mobileNumber, setMobileNumber] = useState('');
+  const [telephoneNumber, setTelephoneNumber] = useState('');
+  const [addressOne, setAddressOne] = useState('');
+  const [addressTwo, setAddressTwo] = useState('');
+  const [city, setCity] = useState('');
+  const [country, setCountry] = useState('');
+  const [postCode, setPostCode] = useState('');
 
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [mobile, setMobile] = useState('');
-  const [address, setAddress] = useState('');
+
+  const navigationHook = useNavigation(navigation);
+
+  const {width} = Dimensions.get('window');
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: isDarkMode ? theme.background : theme.background,
+    },
+
+    screenContentMain: {
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingVertical: 10,
+    },
+    editFormMain: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'start',
+      gap: 20,
+    },
+
+    input: {
+      // width: width - 40,
+      height: 50,
+      margin: 12,
+      borderWidth: 1,
+      borderColor: isDarkMode ? theme.borderColor : theme.borderColor,
+      paddingHorizontal: 20,
+      borderRadius: 50,
+    },
+  });
+
+  //   const handleSubmit = () => {
+  //     navigationHook.navigate('Home', {
+  //       phone: phone,
+  //       password: password,
+  //     });
+  //   };
+
+  //   console.log(theme);
+  const handleLogin = () => {
+    navigation.navigate('BottomNavigator');
+  };
 
   return (
-    <ScrollView style={{backgroundColor: isDarkMode ? '#000' : 'white'}}>
-      <SafeAreaView>
-        <View style={[styles.container]}>
-          <HeaderComponent
-            headerTitle="Edit Profile"
-            headerSubTitle="Edit your profile information"
-          />
-
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <View>
           <View style={styles.screenContentMain}>
             <View style={styles.editFormMain}>
               <CustomTextInput
-                placeholder="Name"
-                name="name"
-                onChangeText={text => setName(text)}
+                placeholder="First name"
+                name="fname"
+                value={fname}
+                onChangeText={text => setFname(text)}
               />
-
+              <CustomTextInput
+                placeholder="Last name"
+                name="lname"
+                value={lname}
+                onChangeText={text => setLname(text)}
+              />
               <CustomTextInput
                 placeholder="Email"
                 name="email"
+                value={email}
                 onChangeText={text => setEmail(text)}
               />
-
               <CustomTextInput
-                placeholder="Mobile Number"
-                name="mobile"
-                onChangeText={text => setMobile(text)}
+                placeholder="Mobile number"
+                name="mobileNumber"
+                value={mobileNumber}
+                onChangeText={text => setMobileNumber(text)}
               />
-
               <CustomTextInput
-                placeholder="Address"
-                name="address"
-                onChangeText={text => setAddress(text)}
+                placeholder="Telephone number"
+                name="telephoneNumber"
+                value={telephoneNumber}
+                onChangeText={text => setTelephoneNumber(text)}
               />
-
-              <CustomTouchableButton
-                title="Save"
-                onPress={() => navigation.navigate('Profile')}
+              <CustomTextInput
+                placeholder="Address 1"
+                name="addressOne"
+                value={addressOne}
+                onChangeText={text => setAddressOne(text)}
               />
+              <CustomTextInput
+                placeholder="Address 2"
+                name="addressTwo"
+                value={addressTwo}
+                onChangeText={text => setAddressTwo(text)}
+              />
+              <CustomTextInput
+                placeholder="City"
+                name="city"
+                value={city}
+                onChangeText={text => setCity(text)}
+              />
+              <CustomTextInput
+                placeholder="Country"
+                name="country"
+                value={country}
+                onChangeText={text => setCountry(text)}
+              />
+              <CustomTextInput
+                placeholder="Post code"
+                name="postCode"
+                value={postCode}
+                onChangeText={text => setPostCode(text)}
+              />
+              <CustomTouchableButton onPress={handleLogin} title="Register" />
             </View>
           </View>
         </View>
-      </SafeAreaView>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
-
-const {width} = Dimensions.get('window');
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  screenContentMain: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 10,
-  },
-  editFormMain: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'start',
-    gap: 20,
-  },
-  input: {
-    width: width - 20,
-    height: 50,
-    borderWidth: 1,
-    borderColor: '#EB1C3C',
-    paddingHorizontal: 20,
-    borderRadius: 50,
-  },
-  button: {
-    width: width - 20,
-    margin: 12,
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    borderRadius: 50,
-    // Use dynamic backgroundColor based on dark mode
-    backgroundColor: '#EB1C3C',
-    // Shadow properties for both Android and iOS
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 1.84,
-    elevation: 5, // Only for Android
-  },
-});

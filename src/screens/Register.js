@@ -20,8 +20,14 @@ import {useTheme} from '../provider/ThemeProvider';
 export default function Register({navigation}) {
   const isDarkMode = useColorScheme() === 'dark';
   const theme = useTheme();
-  const [email, setEmail] = useState('');
+  const [fname, setFname] = useState('');
+  const [lname, setLname] = useState('');
+  const [mobileNumber, setMobileNumber] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const [email, setEmail] = useState('');
+
   const navigationHook = useNavigation(navigation);
 
   const {width} = Dimensions.get('window');
@@ -73,59 +79,51 @@ export default function Register({navigation}) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        <Text
-          style={{
-            fontSize: theme.fontSize.large,
-            fontWeight: 'bold',
-            textAlign: 'center',
-            color: isDarkMode ? theme.text : theme.text,
-          }}>
-          Login your account
-        </Text>
-        <View style={styles.screenContentMain}>
-          <View style={styles.editFormMain}>
-            <CustomTextInput
-              placeholder="Email"
-              name="email"
-              value={email}
-              onChangeText={text => setEmail(text)}
-            />
-            <CustomTextInput
-              placeholder="Password"
-              name="password"
-              value={password}
-              onChangeText={text => setPassword(text)}
-            />
-            <CustomTouchableButton onPress={handleLogin} title="Login" />
-
-            <View>
-              <Text
-                style={{
-                  textAlign: 'center',
-                  color: isDarkMode ? '#fff' : '#000',
-                }}
-                onPress={() => navigation.navigate('ForgotPassword')}>
-                Forgot Password ?
-              </Text>
-            </View>
-            <View>
-              <Text
-                style={{
-                  textAlign: 'center',
-                  color: isDarkMode ? '#fff' : '#000',
-                }}>
-                Don't have an account ?{' '}
-                <Text
-                  style={{fontWeight: 'bold', color: theme.primary}}
-                  onPress={() => navigation.navigate('Register')}>
-                  Register
-                </Text>
-              </Text>
+      <ScrollView>
+        <View>
+          <View style={styles.screenContentMain}>
+            <View style={styles.editFormMain}>
+              <CustomTextInput
+                placeholder="First name"
+                name="fname"
+                value={fname}
+                onChangeText={text => setFname(text)}
+              />
+              <CustomTextInput
+                placeholder="Last name"
+                name="lname"
+                value={lname}
+                onChangeText={text => setLname(text)}
+              />
+              <CustomTextInput
+                placeholder="Email"
+                name="email"
+                value={email}
+                onChangeText={text => setEmail(text)}
+              />
+              <CustomTextInput
+                placeholder="Mobile number"
+                name="mobileNumber"
+                value={mobileNumber}
+                onChangeText={text => setMobileNumber(text)}
+              />
+              <CustomTextInput
+                placeholder="Password"
+                name="password"
+                value={password}
+                onChangeText={text => setPassword(text)}
+              />
+              <CustomTextInput
+                placeholder="Confirm Password"
+                name="confirmPassword"
+                value={confirmPassword}
+                onChangeText={text => setConfirmPassword(text)}
+              />
+              <CustomTouchableButton onPress={handleLogin} title="Register" />
             </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
