@@ -1,17 +1,9 @@
-import {
-  View,
-  Text,
-  StatusBar,
-  TouchableOpacity,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Image,
-} from 'react-native';
-import React from 'react';
+import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
+import React, {useState} from 'react';
 import ScrollableTabString from 'react-native-scrollable-tabstring';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {Button, Overlay} from '@rneui/themed';
 
 const tabNames = [
   {
@@ -257,7 +249,12 @@ const dataSections = [
   },
 ];
 
-export default function Home() {
+export default function Home({navigation}) {
+  const [visible, setVisible] = useState(false);
+
+  const toggleOverlay = () => {
+    setVisible(!visible);
+  };
   return (
     <>
       <View style={styles.container}>
@@ -326,6 +323,7 @@ export default function Home() {
         </View>
         <View style={styles.tabsButtons}>
           <Text
+            onPress={() => navigation.navigate('Info')}
             style={{
               fontSize: 12,
               color: 'white',
@@ -335,9 +333,10 @@ export default function Home() {
               textAlign: 'center',
               width: 70,
             }}>
-            Pre Order
+            Info
           </Text>
           <Text
+            onPress={() => navigation.navigate('Review')}
             style={{
               fontSize: 12,
               color: 'white',
@@ -347,9 +346,10 @@ export default function Home() {
               textAlign: 'center',
               width: 70,
             }}>
-            Pre Order
+            Review
           </Text>
           <Text
+            onPress={toggleOverlay}
             style={{
               fontSize: 12,
               color: 'white',
@@ -359,7 +359,7 @@ export default function Home() {
               textAlign: 'center',
               width: 70,
             }}>
-            Pre Order
+            Offer
           </Text>
         </View>
         <View style={styles.scrollable}>
@@ -403,9 +403,39 @@ export default function Home() {
           />
         </View>
         <View style={styles.cart}>
-          <Text>Cart</Text>
+          <View>
+            <Text style={{color: 'white'}}>Sub Total: $6.65</Text>
+            <Text style={{color: 'white'}}>Total: $6.65</Text>
+          </View>
+          <View>
+            <Text
+              style={{color: 'white'}}
+              onPress={() => navigation.navigate('Cart')}>
+              Go to cart
+            </Text>
+          </View>
         </View>
       </View>
+
+      <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
+        <Text style={styles.textPrimary}>Hello!</Text>
+        <Text style={styles.textSecondary}>
+          Welcome to React Native Elements
+        </Text>
+        <Button
+          icon={
+            <Icon
+              name="wrench"
+              type="font-awesome"
+              color="white"
+              size={25}
+              iconStyle={{marginRight: 10}}
+            />
+          }
+          title="Start Building"
+          onPress={toggleOverlay}
+        />
+      </Overlay>
     </>
   );
 }
@@ -436,8 +466,12 @@ const styles = StyleSheet.create({
   cart: {
     // flex: 1,
     height: 50,
-    backgroundColor: 'white',
+    backgroundColor: 'brown',
     borderRadius: 5,
+    padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 
   headerContent: {
@@ -475,5 +509,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingVertical: 10,
     borderRadius: 5,
+  },
+
+  textPrimary: {
+    marginVertical: 20,
+    textAlign: 'center',
+    fontSize: 20,
+  },
+  textSecondary: {
+    marginBottom: 10,
+    textAlign: 'center',
+    fontSize: 17,
   },
 });

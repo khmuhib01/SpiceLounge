@@ -15,6 +15,8 @@ import ForgotPassword from './screens/ForgotPassword';
 import OrderHistory from './screens/OrderHistory';
 import About from './screens/About';
 import Terms from './screens/Terms';
+import Info from './screens/Info';
+import Review from './screens/Review';
 
 const Stack = createNativeStackNavigator();
 
@@ -45,7 +47,16 @@ export default function Route() {
         <Stack.Screen name="Screen1" component={Screen1} />
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen
+          name="Cart"
+          component={Cart}
+          options={{
+            headerStyle: {
+              backgroundColor: isDarkMode ? theme.primary : theme.primary,
+            },
+            headerTintColor: isDarkMode ? theme.appBarText : theme.appBarText,
+          }}
+        />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen
           name="Login"
@@ -110,6 +121,26 @@ export default function Route() {
         <Stack.Screen
           name="Terms"
           component={Terms}
+          options={{
+            headerStyle: {
+              backgroundColor: isDarkMode ? theme.primary : theme.primary,
+            },
+            headerTintColor: isDarkMode ? theme.appBarText : theme.appBarText,
+          }}
+        />
+        <Stack.Screen
+          name="Info"
+          component={Info}
+          options={{
+            headerStyle: {
+              backgroundColor: isDarkMode ? theme.primary : theme.primary,
+            },
+            headerTintColor: isDarkMode ? theme.appBarText : theme.appBarText,
+          }}
+        />
+        <Stack.Screen
+          name="Review"
+          component={Review}
           options={{
             headerStyle: {
               backgroundColor: isDarkMode ? theme.primary : theme.primary,
