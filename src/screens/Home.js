@@ -1,7 +1,17 @@
-import {View, Text, StatusBar, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StatusBar,
+  TouchableOpacity,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Image,
+} from 'react-native';
 import React from 'react';
 import ScrollableTabString from 'react-native-scrollable-tabstring';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const tabNames = [
   {
@@ -250,37 +260,220 @@ const dataSections = [
 export default function Home() {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
-      <ScrollableTabString
-        dataTabs={tabNames}
-        dataSections={dataSections}
-        renderSection={item => (
-          <View>
-            <Text>{item.name}</Text>
-            {item.data.map(i => (
-              <Text key={i.id} style={{padding: 20}}>
-                {i.name}
-              </Text>
-            ))}
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <View style={styles.headerContent}>
+            <View style={styles.headerImage}>
+              <Image
+                source={require('../assets/profile.jpg')}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  // borderRadius: 5,
+                }}
+              />
+            </View>
+            <View style={styles.headerInfo}>
+              <View
+                style={{
+                  flexDirection: 'column',
+                  justifyContent: 'space-around',
+                  height: '100%',
+                }}>
+                <View>
+                  <Text style={{fontSize: 12, fontWeight: 'bold'}}>
+                    British Indian Restaurant
+                  </Text>
+                </View>
+                <View
+                  style={{flexDirection: 'row', gap: 5, alignItems: 'center'}}>
+                  <Icon name="home" size={12} color="brown" />
+                  <Text style={{fontSize: 12}}>Indian</Text>
+                </View>
+                <View
+                  style={{flexDirection: 'row', gap: 5, alignItems: 'center'}}>
+                  <Icon name="home" size={12} color="brown" />
+                  <Text style={{fontSize: 12}}>40 mins</Text>
+                  <Icon name="home" size={12} color="brown" />
+                  <Text style={{fontSize: 12}}>60 mins</Text>
+                </View>
+                <View
+                  style={{flexDirection: 'row', gap: 5, alignItems: 'center'}}>
+                  <Icon name="home" size={12} color="brown" />
+                  <Text style={{fontSize: 12}}>XXXXXXXXXXX</Text>
+                  <Icon name="home" size={12} color="brown" />
+                  <Text style={{fontSize: 12}}>XXXXXXXXXXX</Text>
+                </View>
+              </View>
+            </View>
+            <View style={styles.headerButton}>
+              <View style={styles.preOrderButton}>
+                <Text
+                  style={{
+                    fontSize: 12,
+                    color: 'white',
+                    backgroundColor: 'brown',
+                    padding: 5,
+                    borderRadius: 100,
+                    textAlign: 'center',
+                    width: 70,
+                  }}>
+                  Pre Order
+                </Text>
+              </View>
+            </View>
           </View>
-        )}
-        renderTabName={item => (
-          <TouchableOpacity>
-            <Text style={{padding: 10}}>{item.title}</Text>
-          </TouchableOpacity>
-        )}
-        selectedTabStyle={{
-          borderColor: Colors.brown_grey,
-          borderRadius: 10,
-          borderWidth: 1,
-          margin: 10,
-        }}
-        unselectedTabStyle={{
-          backgroundColor: Colors.white,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      />
+        </View>
+        <View style={styles.tabsButtons}>
+          <Text
+            style={{
+              fontSize: 12,
+              color: 'white',
+              backgroundColor: 'brown',
+              padding: 5,
+              borderRadius: 100,
+              textAlign: 'center',
+              width: 70,
+            }}>
+            Pre Order
+          </Text>
+          <Text
+            style={{
+              fontSize: 12,
+              color: 'white',
+              backgroundColor: 'brown',
+              padding: 5,
+              borderRadius: 100,
+              textAlign: 'center',
+              width: 70,
+            }}>
+            Pre Order
+          </Text>
+          <Text
+            style={{
+              fontSize: 12,
+              color: 'white',
+              backgroundColor: 'brown',
+              padding: 5,
+              borderRadius: 100,
+              textAlign: 'center',
+              width: 70,
+            }}>
+            Pre Order
+          </Text>
+        </View>
+        <View style={styles.scrollable}>
+          <ScrollableTabString
+            dataTabs={tabNames}
+            dataSections={dataSections}
+            renderSection={item => (
+              <View>
+                <Text>{item.name}</Text>
+                {item.data.map(i => (
+                  <Text key={i.id} style={{padding: 20}}>
+                    {i.name}
+                  </Text>
+                ))}
+              </View>
+            )}
+            renderTabName={item => (
+              <TouchableOpacity>
+                <Text style={{padding: 10, fontWeight: 'bold'}}>
+                  {item.title}
+                </Text>
+              </TouchableOpacity>
+            )}
+            selectedTabStyle={{
+              borderColor: Colors.brown_grey,
+              borderRadius: 10,
+              borderWidth: 1,
+              margin: 10,
+            }}
+            unselectedTabStyle={{
+              backgroundColor: Colors.white,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            tabStyle={{
+              borderColor: Colors.brown_grey,
+              borderRadius: 10,
+              borderWidth: 1,
+              margin: 10,
+            }}
+          />
+        </View>
+        <View style={styles.cart}>
+          <Text>Cart</Text>
+        </View>
+      </View>
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    rowGap: 10,
+    padding: 10,
+  },
+
+  header: {
+    width: '100%',
+    borderRadius: 5,
+    backgroundColor: 'white',
+    // flex: 1,
+    height: 90,
+    padding: 10,
+  },
+
+  scrollable: {
+    flex: 1,
+    backgroundColor: 'white',
+    borderRadius: 5,
+  },
+
+  cart: {
+    // flex: 1,
+    height: 50,
+    backgroundColor: 'white',
+    borderRadius: 5,
+  },
+
+  headerContent: {
+    flex: 1,
+    flexDirection: 'row',
+    gap: 10,
+  },
+
+  headerImage: {
+    // flex: 2,
+    width: 85,
+    backgroundColor: 'green',
+  },
+
+  headerInfo: {
+    flex: 1,
+    // backgroundColor: 'red',
+  },
+
+  headerButton: {
+    // flex: 1,
+    width: 70,
+    // backgroundColor: 'blue',
+  },
+
+  preOrderButton: {
+    flex: 1,
+    alignItems: 'flex-end',
+  },
+
+  tabsButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    paddingVertical: 10,
+    borderRadius: 5,
+  },
+});
